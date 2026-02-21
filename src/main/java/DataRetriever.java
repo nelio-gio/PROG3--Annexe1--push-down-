@@ -5,9 +5,8 @@ import java.util.List;
 
 public class DataRetriever {
 
-    // ─────────────────────────────────────────────
+
     // Q1 - Total par facture
-    // ─────────────────────────────────────────────
     public List<InvoiceTotal> findInvoiceTotals() {
         List<InvoiceTotal> result = new ArrayList<>();
         String sql = """
@@ -36,9 +35,8 @@ public class DataRetriever {
         return result;
     }
 
-    // ─────────────────────────────────────────────
+
     // Q2 - Total des factures CONFIRMED et PAID
-    // ─────────────────────────────────────────────
     public List<InvoiceTotal> findConfirmedAndPaidInvoiceTotals() {
         List<InvoiceTotal> result = new ArrayList<>();
         String sql = """
@@ -68,9 +66,8 @@ public class DataRetriever {
         return result;
     }
 
-    // ─────────────────────────────────────────────
+
     // Q3 - Totaux cumulés par statut
-    // ─────────────────────────────────────────────
     public InvoiceStatusTotals computeStatusTotals() {
         String sql = """
                 SELECT
@@ -97,10 +94,9 @@ public class DataRetriever {
         return null;
     }
 
-    // ─────────────────────────────────────────────
+
     // Q4 - Chiffre d'affaires pondéré HT
     // PAID=100%, CONFIRMED=50%, DRAFT=0%
-    // ─────────────────────────────────────────────
     public Double computeWeightedTurnover() {
         String sql = """
                 SELECT SUM(
@@ -126,9 +122,8 @@ public class DataRetriever {
         return null;
     }
 
-    // ─────────────────────────────────────────────
+
     // Q5-A - Totaux HT, TVA et TTC par facture
-    // ─────────────────────────────────────────────
     public List<InvoiceTaxSummary> findInvoiceTaxSummaries() {
         List<InvoiceTaxSummary> result = new ArrayList<>();
         String sql = """
@@ -161,9 +156,8 @@ public class DataRetriever {
         return result;
     }
 
-    // ─────────────────────────────────────────────
+
     // Q5-B - Chiffre d'affaires TTC pondéré
-    // ─────────────────────────────────────────────
     public BigDecimal computeWeightedTurnoverTtc() {
         String sql = """
                 SELECT SUM(
